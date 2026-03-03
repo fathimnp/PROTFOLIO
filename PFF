@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fathima | Data Analyst Portfolio</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: #0f172a;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #cbd5e1;
+}
+
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    border-left: 5px solid #2563eb;
+    padding-left: 12px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.skills span {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 8px 14px;
+    margin: 6px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+code {
+    background: #f1f5f9;
+    padding: 8px;
+    display: block;
+    overflow-x: auto;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #0f172a;
+    color: white;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Fathima</h1>
+    <p>Data Analyst | Power BI | SQL | Advanced Excel</p>
+</header>
+
+<section>
+<h2>Professional Summary</h2>
+<div class="card">
+B.Com graduate from University of Calicut (78%) with hands-on experience in Power BI, SQL, and Excel.
+Skilled in KPI tracking, data modeling, dashboard development, and business performance analysis.
+Focused on transforming raw transactional data into actionable business insights.
+</div>
+</section>
+
+<section>
+<h2>Education</h2>
+<div class="card">
+<strong>Bachelor of Commerce (B.Com)</strong><br>
+University of Calicut<br>
+2023 – 2026<br>
+Percentage: 78%
+</div>
+</section>
+
+<section>
+<h2>Core Technical Skills</h2>
+<div class="skills">
+<span>Power BI</span>
+<span>DAX</span>
+<span>SQL</span>
+<span>MySQL</span>
+<span>Advanced Excel</span>
+<span>Data Modeling</span>
+<span>KPI Analysis</span>
+<span>Business Intelligence</span>
+</div>
+</section>
+
+<section>
+<h2>Project: KPI Tracking Dashboard (End-to-End)</h2>
+
+<div class="card">
+<strong>Project Overview:</strong><br>
+Developed an interactive KPI Dashboard using SQL backend and Power BI frontend 
+to monitor sales performance, profit margins, and target variance across 10,000+ records.
+</div>
+
+<div class="card">
+<strong>SQL Database Schema:</strong>
+
+<code>
+CREATE TABLE Regions (
+Region_ID INT PRIMARY KEY,
+Region_Name VARCHAR(50)
+);
+</code>
+
+<code>
+CREATE TABLE Products (
+Product_ID INT PRIMARY KEY,
+Product_Name VARCHAR(100),
+Category VARCHAR(50),
+Unit_Cost DECIMAL(10,2)
+);
+</code>
+
+<code>
+CREATE TABLE Sales (
+Sales_ID INT PRIMARY KEY,
+Order_Date DATE,
+Product_ID INT,
+Quantity INT,
+Sales_Amount DECIMAL(10,2),
+FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID)
+);
+</code>
+
+</div>
+
+<div class="card">
+<strong>KPI SQL Query (Profit Calculation):</strong>
+
+<code>
+SELECT 
+SUM(s.Sales_Amount) AS Total_Sales,
+SUM(p.Unit_Cost * s.Quantity) AS Total_Cost,
+SUM(s.Sales_Amount) - SUM(p.Unit_Cost * s.Quantity) AS Profit
+FROM Sales s
+JOIN Products p ON s.Product_ID = p.Product_ID;
+</code>
+</div>
+
+<div class="card">
+<strong>Power BI DAX Measures:</strong>
+
+<code>
+Total Sales = SUM(Sales[Sales_Amount])
+</code>
+
+<code>
+Profit = [Total Sales] - SUMX(Sales, Sales[Quantity] * RELATED(Products[Unit_Cost]))
+</code>
+
+<code>
+Profit Margin % = DIVIDE([Profit], [Total Sales], 0)
+</code>
+</div>
+
+<div class="card">
+<strong>Business Impact:</strong>
+<ul>
+<li>Identified underperforming regions using variance analysis</li>
+<li>Improved KPI visibility for management decision-making</li>
+<li>Reduced manual reporting through automated dashboard</li>
+</ul>
+</div>
+
+</section>
+
+<section>
+<h2>Additional Projects</h2>
+
+<div class="card">
+<strong>Sales Performance Dashboard (Power BI)</strong><br>
+Designed interactive reports with slicers, trend analysis, and YoY growth tracking using DAX.
+</div>
+
+<div class="card">
+<strong>Customer Segmentation Analysis (SQL)</strong><br>
+Used GROUP BY, JOIN, and aggregation queries to classify customers based on revenue contribution.
+</div>
+
+</section>
+
+<section>
+<h2>Contact</h2>
+<div class="card">
+Email: <a href="mailto:fathimanp43@gmail.com">fathimanp43@gmail.com</a><br>
+GitHub: https://github.com/yourusername<br>
+LinkedIn: https://linkedin.com/in/yourname
+</div>
+</section>
+
+<footer>
+© 2026 Fathima | Data Analyst Portfolio
+</footer>
+
+</body>
+</html>
